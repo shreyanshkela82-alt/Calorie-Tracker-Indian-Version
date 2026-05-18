@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Set Profile | CalorieTracker</title>
+
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+
+  <div class="profile-page">
+
+    <div class="bg-circle circle-one"></div>
+    <div class="bg-circle circle-two"></div>
+
+    <!-- Header -->
+    <header class="profile-header">
+
+      <div class="brand">
+
+        <!-- Custom Logo -->
+        <div class="logo-circle">
+          <img src="logo.png" alt="logo">
+        </div>
+
+        <div class="brand-text">
+          <h1>CalorieTracker</h1>
+          <p>Personalize your health journey</p>
+        </div>
+
+      </div>
+
+      <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+
+    </header>
+
+    <main class="profile-layout">
+
+      <!-- Left Info Section -->
+      <section class="profile-info">
+
+        <span class="badge">Profile Setup</span>
+
+        <h2>Build Your Personalized Calorie Plan</h2>
+
+        <p>
+          Enter your basic details so we can calculate your BMI,
+          daily calorie target, goal status, and fitness progress.
+        </p>
+
+        <div class="profile-mini-summary">
+
+          <div class="mini-card">
+            <span>Current BMI</span>
+            <strong id="sideBmi">--</strong>
+          </div>
+
+          <div class="mini-card">
+            <span>Daily Target</span>
+            <strong id="sideCalories">-- kcal</strong>
+          </div>
+
+          <div class="mini-card">
+            <span>Goal</span>
+            <strong id="sideGoal">--</strong>
+          </div>
+
+          <div class="mini-card">
+            <span>Activity</span>
+            <strong id="sideActivity">--</strong>
+          </div>
+
+        </div>
+
+        <div class="info-points">
+
+          <div>
+            <strong>📏 BMI Analysis</strong>
+            <span>Check your body status instantly</span>
+          </div>
+
+          <div>
+            <strong>🎯 Goal-Based Calories</strong>
+            <span>Target changes with weight loss or maintain goal</span>
+          </div>
+
+          <div>
+            <strong>📊 Progress Tracking</strong>
+            <span>Track meals, calories, BMI and improvement</span>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Right Profile Form -->
+      <section class="profile-card">
+
+        <h2>Set Your Profile</h2>
+        <p class="subtitle">Enter your details to calculate your daily calories</p>
+
+        <form id="profileForm">
+
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+
+          <div class="row">
+
+            <div class="input-box">
+              <label for="age">Age</label>
+              <input type="number" id="age" placeholder="20" min="1" required />
+            </div>
+
+            <div class="input-box">
+              <label for="gender">Gender</label>
+              <select id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="input-box">
+              <label for="weight">Weight (kg)</label>
+              <input type="number" id="weight" placeholder="72" min="1" required />
+            </div>
+
+            <div class="input-box">
+              <label for="height">Height (cm)</label>
+              <input type="number" id="height" placeholder="170" min="1" required />
+            </div>
+
+          </div>
+
+          <label for="activity">Activity Level</label>
+          <select id="activity" required>
+            <option value="1.2">Little / No Exercise</option>
+            <option value="1.375">Lightly Active</option>
+            <option value="1.55">Moderately Active</option>
+            <option value="1.725">Very Active</option>
+          </select>
+
+          <label for="goal">Goal</label>
+          <select id="goal" required>
+            <option value="lose">Weight Loss</option>
+            <option value="maintain">Maintain Weight</option>
+          </select>
+
+          <div class="result-preview">
+
+            <div>
+              <span>BMI</span>
+              <strong id="previewBmi">--</strong>
+            </div>
+
+            <div>
+              <span>Target</span>
+              <strong id="previewCalories">-- kcal</strong>
+            </div>
+
+          </div>
+
+          <button type="submit">Save Profile</button>
+
+        </form>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

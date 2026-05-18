@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CalorieTracker | Dashboard</title>
+
+    <!-- Modern Font Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+
+        <div class="brand">
+          <div class="logo-circle">
+            <img src="logo.png" alt="CalorieTracker logo" />
+          </div>
+
+          <h2 class="brand-text">CalorieTracker</h2>
+        </div>
+
+        <nav>
+          <a class="active" href="dashboard.html" data-name="Dashboard">
+            <span class="icon">🏠</span>
+            <span class="text">Dashboard</span>
+          </a>
+
+          <a href="profile.html" data-name="My Profile">
+            <span class="icon">👤</span>
+            <span class="text">My Profile</span>
+          </a>
+
+          <a href="workout.html" data-name="Workouts">
+            <span class="icon">🏃</span>
+            <span class="text">Workouts</span>
+          </a>
+
+          <a href="progress.html" data-name="Progress">
+            <span class="icon">📊</span>
+            <span class="text">Progress</span>
+          </a>
+
+          <button class="logout-btn" onclick="logoutUser()" data-name="Logout">
+            <span class="logout-icon">↪</span>
+            <span class="text">Logout</span>
+          </button>
+        </nav>
+
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main">
+
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-left">
+            <button id="toggleBtn" aria-label="Toggle Sidebar">☰</button>
+
+            <div>
+              <h1 id="welcomeText">👋 Welcome back!</h1>
+              <p>Track your calories, meals, and fitness progress.</p>
+            </div>
+          </div>
+
+          <div class="date-box" id="dateBox"></div>
+        </header>
+
+        <!-- Setup Message -->
+        <p id="setupMsg" class="setup-msg"></p>
+
+        <!-- Cards -->
+        <section class="cards">
+
+          <div class="card">
+            <div class="card-header">
+              <h3>⚖ Weight</h3>
+            </div>
+
+            <h2 id="weightValue">-- kg</h2>
+            <p>Syncing from profile</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>📏 BMI</h3>
+            </div>
+
+            <h2 id="bmiValue">--</h2>
+            <p id="bmiStatus">Pending data</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>🎯 Daily Target</h3>
+            </div>
+
+            <h2 id="targetCalories">-- kcal</h2>
+            <p>Personalized goal</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>🔥 Remaining</h3>
+            </div>
+
+            <h2 id="remainingCalories">-- kcal</h2>
+            <p id="remainingStatus">Safe to consume</p>
+          </div>
+
+        </section>
+
+        <section class="content-grid">
+
+          <!-- Meal Tracker -->
+          <div class="card meal-card">
+            <div class="card-title-group">
+              <h3>🍽 Daily Indian Meal Tracker</h3>
+              <p class="small-text">Quick log your favorites</p>
+            </div>
+
+            <div class="meal-form">
+
+              <div class="form-group">
+                <label for="rotiQty">Roti</label>
+                <input type="number" id="rotiQty" placeholder="0" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="sabjiQty">Sabji Bowl</label>
+                <input type="number" id="sabjiQty" placeholder="0" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="riceQty">Rice (g)</label>
+                <input type="number" id="riceQty" placeholder="0" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="dalQty">Dal Bowl</label>
+                <input type="number" id="dalQty" placeholder="0" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="papadQty">Papad</label>
+                <input type="number" id="papadQty" placeholder="0" min="0" />
+              </div>
+
+              <div class="form-group">
+                <label for="otherFood">Sweet / Other</label>
+                <select id="otherFood">
+                  <option value="">Select extra food</option>
+                  <option value="gulabJamun">Gulab Jamun</option>
+                  <option value="rasgulla">Rasgulla</option>
+                  <option value="curd">Curd</option>
+                  <option value="paneerSabji">Paneer Sabji</option>
+                </select>
+              </div>
+
+              <div class="form-group other-qty">
+                <label for="otherQty">Other Quantity</label>
+                <input
+                  type="number"
+                  id="otherQty"
+                  placeholder="Enter amount..."
+                  min="0"
+                />
+              </div>
+
+              <button onclick="addIndianMeal()" class="btn-primary">
+                Add Meal to Log
+              </button>
+
+            </div>
+
+            <div id="mealList" class="meal-list"></div>
+
+            <!-- Clear / Reset Buttons -->
+            <div class="meal-actions">
+              <button class="clear-meals-btn" onclick="clearTodayMeals()">
+                Clear Today’s Meals
+              </button>
+
+              <button class="reset-data-btn" onclick="resetAllData()">
+                Reset All Data
+              </button>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-info">
+                <span id="consumedText">0 / 0 kcal consumed</span>
+              </div>
+
+              <div class="progress-bar">
+                <div id="calorieProgress"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workout Suggestions -->
+          <a href="workout.html" class="workout-page-link">
+            <div class="card workout-card clickable-card">
+
+              <div class="card-header">
+                <h3>🏃 Fitness Recommendations</h3>
+              </div>
+
+              <div id="workoutSuggestion" class="suggestion-placeholder">
+                <p>
+                  View personalized workout plans based on your calories and goals.
+                </p>
+
+                <div class="open-workout-btn">
+                  Open Workout Page →
+                </div>
+              </div>
+
+            </div>
+          </a>
+
+        </section>
+
+        <!-- Smart Insight -->
+        <section class="card alert-card">
+          <div class="alert-heading">
+            <span>💡</span>
+            <h3>Smart Health Insight</h3>
+          </div>
+
+          <p id="smartAlert">
+            Ready to track? Your personalized alerts will appear as you log data.
+          </p>
+        </section>
+
+      </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
