@@ -75,27 +75,27 @@ async function loadProfile() {
 
 async function loadProgress() {
 
-    const response = await fetch(
-    "https://indian-calorie-tracker-api.onrender.com/api/profile",
-        {
-            headers: {
-                Authorization: `Bearer ${token}`
+    try {
+
+        const response = await fetch(
+            "https://indian-calorie-tracker-api.onrender.com/api/progress",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        }
-    );
+        );
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (data.success) {
+        progressList = Array.isArray(data.progress) ? data.progress : [];
 
-        progressList = data.progress;
+    } catch (err) {
 
-    } else {
-
+        console.error(err);
         progressList = [];
 
     }
-
 }
 
 /* ===========================
@@ -104,17 +104,26 @@ async function loadProgress() {
 
 function calculateValues() {
 
+    if (!profile) {
+        console.error("Profile not loaded");
+        return;
+    }
+
     bmi = Number(profile.bmi || 0);
     bmiStatus = profile.bmiStatus || "Pending";
     goal = profile.goal || "maintain";
+
+    if (!Array.isArray(progressList)) {
+        progressList = [];
+    }
 
     if (progressList.length > 0) {
 
         const latest = progressList[progressList.length - 1];
 
-        consumedCalories = latest.caloriesConsumed;
-        burnedCalories = latest.caloriesBurned;
-        dailyTarget = latest.targetCalories;
+        consumedCalories = latest.caloriesConsumed || 0;
+        burnedCalories = latest.caloriesBurned || 0;
+        dailyTarget = latest.targetCalories || profile.dailyCalories || 0;
 
     } else {
 
@@ -125,12 +134,7 @@ function calculateValues() {
     }
 
     remainingCalories = dailyTarget - consumedCalories;
-
-    extraCalories =
-        consumedCalories > dailyTarget
-            ? consumedCalories - dailyTarget
-            : 0;
-
+    extraCalories = Math.max(0, consumedCalories - dailyTarget);
 }
 
 /* ===========================
