@@ -1,101 +1,268 @@
-# Indian Calorie Tracker
+# 🇮🇳 Indian Calorie Tracker
 
-A full-stack calorie and fitness tracking app with an Indian food database,
-BMI/BMR-based calorie targets, meal logging, workout tracking, and daily
-progress visualization.
+A full-stack web application designed to help users maintain a healthy lifestyle by tracking calories based on common Indian meals. The application enables users to calculate BMI & BMR, set personalized daily calorie goals, monitor progress, and receive workout recommendations through a secure and responsive dashboard.
 
-## Tech Stack
+---
 
-- **Backend:** Node.js, Express 5, MongoDB (Mongoose), JWT auth, bcrypt
-- **Frontend:** Vanilla HTML/CSS/JavaScript
+## 👨‍💻 Developer
 
-## Project Structure
+**Created by:** **Shreyansh Kela**
 
-```
-Backend/
-  config/db.js              MongoDB connection
-  controllers/               Route handler logic
-  middleware/
-    authMiddleware.js        JWT auth guard
-    errorMiddleware.js       Centralized error handling + 404s
-    rateLimiter.js           Brute-force protection for auth routes
-    validators.js            Request body validation
-  models/                    Mongoose schemas (User, Meal, Workout, Progress)
-  routes/                    Express routers
-  utils/
-    asyncHandler.js          Wraps async routes, forwards errors to next()
-    ApiError.js              Custom error class with HTTP status codes
-    calorieCalculator.js     BMR/TDEE calculation (Mifflin-St Jeor equation)
-    progressSync.js          Keeps daily Progress in sync with meals/workouts
-  server.js                  App entry point
+Computer Science Engineering Student | Full-Stack Web Developer
 
-Frontend/
-  loginpage.html/js, register.html/js   Auth
-  dashboard.html/js                     Meal logging + calorie summary
-  profile.html/js                       User stats, BMI/calorie preview
-  workout.html/js                       Guided workout timer, logs to backend
-  progress.html/js                      Progress history/charts
-```
+GitHub: https://github.com/shreyanshkela82-alt
 
-## Setup
+---
 
-### Backend
+## ✨ Features
 
-```bash
-cd Backend
-npm install
-cp .env.example .env   # then fill in your own values
-npm run dev             # nodemon, auto-restarts on changes
-# or
-npm start
-```
+- 🔐 Secure JWT Authentication
+- 🍛 Indian Food Calorie Database
+- 📊 BMI Calculator
+- 🔥 BMR & Daily Calorie Goal Calculator
+- 🎯 Personalized Fitness Goals
+- 🍽️ Meal Logging
+- 💪 Workout Logging
+- 📈 Daily Progress Dashboard
+- 📅 Progress History
+- 📱 Responsive User Interface
+- 🗄️ MongoDB Database Integration
+- ⚡ RESTful API Architecture
 
-Make sure MongoDB is running locally (or point `MONGO_URI` at Atlas).
+---
 
-Server runs at `http://localhost:5000`. Health check: `GET /api/health`.
+## 🛠️ Tech Stack
 
 ### Frontend
 
-Just open `Frontend/loginpage.html` in a browser (or serve the folder with
-any static file server, e.g. VS Code's Live Server). It talks to the backend
-at `http://localhost:5000/api`.
+- HTML5
+- CSS3
+- JavaScript (ES6)
 
-## API Overview
+### Backend
 
-All protected routes require `Authorization: Bearer <token>`.
+- Node.js
+- Express.js
 
-| Method | Route | Description |
-|---|---|---|
-| POST | `/api/auth/register` | Create account, returns JWT |
-| POST | `/api/auth/login` | Log in, returns JWT |
-| GET | `/api/profile` | Get current user's profile 🔒 |
-| PUT | `/api/profile` | Update profile — server calculates BMI + daily calorie target 🔒 |
-| GET | `/api/meals?date=YYYY-MM-DD` | List meals (optionally by date) 🔒 |
-| POST | `/api/meals` | Log a meal 🔒 |
-| DELETE | `/api/meals/:id` | Delete a meal 🔒 |
-| GET | `/api/workouts?date=YYYY-MM-DD` | List workouts (optionally by date) 🔒 |
-| POST | `/api/workouts` | Log a workout 🔒 |
-| DELETE | `/api/workouts/:id` | Delete a workout 🔒 |
-| GET | `/api/progress?from=&to=` | Get progress history (optional date range) 🔒 |
-| POST | `/api/progress` | Refresh today's progress snapshot 🔒 |
-| DELETE | `/api/progress/:id` | Delete a progress record 🔒 |
+### Database
 
-## Notable Design Decisions
+- MongoDB
+- Mongoose
 
-- **Daily calorie targets are calculated server-side** using the
-  Mifflin-St Jeor BMR equation, rather than trusting a client-submitted
-  number — keeps the value tamper-proof and consistent.
-- **Progress is derived, not manually entered.** `caloriesConsumed` and
-  `caloriesBurned` are recomputed from actual Meal/Workout records any time
-  one is added or removed, so they can never drift out of sync.
-- **Centralized error handling** via a custom `ApiError` class and
-  `asyncHandler` wrapper keeps controllers free of repetitive try/catch
-  blocks and ensures consistent error response shapes.
+### Authentication
 
-## Known Limitations / Next Steps
+- JWT (JSON Web Tokens)
+- bcrypt.js
 
-- No automated test suite yet (would be a good next addition — Jest +
-  Supertest for the API, with `mongodb-memory-server` for isolated DB tests).
-- No password reset / email verification flow.
-- Rate limiting is in-memory per server instance; a multi-instance deployment
-  would want a shared store (e.g. Redis) for `express-rate-limit`.
+### Tools & Technologies
+
+- Git
+- GitHub
+- REST API
+
+---
+
+## 📂 Project Structure
+
+```text
+Backend/
+│
+├── config/
+│   └── db.js
+│
+├── controllers/
+│   ├── authController.js
+│   ├── mealController.js
+│   ├── profileController.js
+│   ├── progressController.js
+│   └── workoutController.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   ├── errorMiddleware.js
+│   ├── rateLimiter.js
+│   └── validators.js
+│
+├── models/
+│   ├── User.js
+│   ├── Meal.js
+│   ├── Workout.js
+│   └── Progress.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── mealRoutes.js
+│   ├── profileRoutes.js
+│   ├── progressRoutes.js
+│   └── workoutRoutes.js
+│
+├── utils/
+│   ├── ApiError.js
+│   ├── asyncHandler.js
+│   ├── calorieCalculator.js
+│   └── progressSync.js
+│
+├── package.json
+└── server.js
+
+
+Frontend/
+│
+├── loginpage.html
+├── loginpage.js
+├── loginpage.css
+│
+├── register.html
+├── register.js
+│
+├── dashboard.html
+├── dashboard.js
+├── dashboard.css
+│
+├── profile.html
+├── profile.js
+├── profile.css
+│
+├── workout.html
+├── workout.js
+├── workout.css
+│
+├── progress.html
+├── progress.js
+├── progress.css
+│
+├── auth.js
+└── assets/
+```
+
+---
+
+## 🚀 Installation & Setup
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/shreyanshkela82-alt/Calorie-Tracker-Indian-Version.git
+
+cd Calorie-Tracker-Indian-Version
+```
+
+---
+
+### Backend Setup
+
+```bash
+cd Backend
+
+npm install
+
+cp .env.example .env
+```
+
+Update your `.env` file with your MongoDB URI and JWT Secret.
+
+Run the backend:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+npm start
+```
+
+Backend runs on:
+
+```
+http://localhost:5000
+```
+
+---
+
+### Frontend Setup
+
+Simply open
+
+```
+Frontend/loginpage.html
+```
+
+or serve the Frontend folder using **VS Code Live Server**.
+
+The frontend communicates with:
+
+```
+http://localhost:5000/api
+```
+
+---
+
+## 📌 API Overview
+
+All protected routes require:
+
+```
+Authorization: Bearer <JWT_TOKEN>
+```
+
+| Method | Endpoint | Description |
+|----------|------------------------------|---------------------------------------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login and receive JWT |
+| GET | `/api/profile` | Get logged-in user profile |
+| PUT | `/api/profile` | Update profile & calorie targets |
+| GET | `/api/meals` | Retrieve meals |
+| POST | `/api/meals` | Add a meal |
+| DELETE | `/api/meals/:id` | Delete a meal |
+| GET | `/api/workouts` | Retrieve workouts |
+| POST | `/api/workouts` | Log workout |
+| DELETE | `/api/workouts/:id` | Delete workout |
+| GET | `/api/progress` | Retrieve progress history |
+| POST | `/api/progress` | Refresh today's progress |
+| DELETE | `/api/progress/:id` | Delete progress record |
+
+---
+
+## 🏗️ Design Decisions
+
+- Daily calorie targets are calculated **server-side** using the **Mifflin-St Jeor Equation**, ensuring accurate and tamper-proof calorie recommendations.
+- Progress is automatically synchronized from meal and workout records, preventing inconsistencies between logged activities and displayed progress.
+- Secure JWT Authentication protects all user-specific routes.
+- Centralized error handling using a custom **ApiError** class and **asyncHandler** keeps controllers clean and maintains consistent API responses.
+- Modular folder architecture improves scalability and maintainability.
+
+---
+
+## 🚀 Future Improvements
+
+- 📧 Email Verification
+- 🔑 Forgot Password & Password Reset
+- 🤖 AI Meal Recommendations
+- 📸 Food Image Recognition
+- 📷 Barcode Scanner
+- 📱 Mobile Application
+- 📊 Weekly Nutrition Analytics
+- ☁️ Cloud Deployment Optimization
+- 🧪 Unit & Integration Testing
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you'd like to improve the project, feel free to fork the repository, create a feature branch, and submit a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🙏 Acknowledgements
+
+This project was independently designed and developed by **Shreyansh Kela** as a full-stack web development project to simplify calorie tracking for users following an Indian diet while strengthening practical skills in Node.js, Express.js, MongoDB, REST APIs, authentication, and backend architecture.
