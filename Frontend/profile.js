@@ -22,7 +22,7 @@ if (!token) {
     window.location.href = "loginpage.html";
 }
 
-fetch("http://localhost:5000/api/profile", {
+fetch("https://indian-calorie-tracker-api.onrender.com", {
   method: "GET",
   headers: {
     Authorization: `Bearer ${token}`

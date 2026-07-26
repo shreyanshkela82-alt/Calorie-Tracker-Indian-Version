@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
 async function loadProfile() {
 
     const response = await fetch(
-        "http://localhost:5000/api/profile",
+        "https://indian-calorie-tracker-api.onrender.com",
         {
             headers: {
                 Authorization: `Bearer ${token}`
