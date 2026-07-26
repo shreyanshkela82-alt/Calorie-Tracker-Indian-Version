@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Progress | CalorieTracker</title>
+
+  <link rel="stylesheet" href="progress.css" />
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="progress-page">
+
+    <!-- Header -->
+    <header class="progress-header">
+
+      <div class="brand">
+        <div class="logo-circle">
+          <img src="logo.png" alt="CalorieTracker logo" />
+        </div>
+
+        <div>
+          <h1>Progress Overview</h1>
+          <p>Track your BMI, calories, goals, and health progress</p>
+        </div>
+      </div>
+
+      <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+
+    </header>
+
+    <!-- Progress Summary Cards -->
+    <section class="progress-cards">
+
+      <div class="progress-card">
+        <h3>📏 BMI</h3>
+        <h2 id="bmiValue">--</h2>
+        <p id="bmiStatus">Pending</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>🎯 Daily Target</h3>
+        <h2 id="dailyTarget">-- kcal</h2>
+        <p>Your recommended calorie goal</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>🔥 Consumed</h3>
+        <h2 id="consumedCalories">-- kcal</h2>
+        <p>Total calories eaten today</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>✅ Remaining</h3>
+        <h2 id="remainingCalories">-- kcal</h2>
+        <p id="remainingStatus">Calories left for today</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>🏁 Goal</h3>
+        <h2 id="goalType">--</h2>
+        <p>Your current fitness goal</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>📊 Calorie Status</h3>
+        <h2 id="calorieStatus">--</h2>
+        <p id="statusText">Start tracking your meals</p>
+      </div>
+
+    </section>
+
+    <!-- Smart Message -->
+    <section class="progress-message-box">
+      <h2>Smart Progress Insight</h2>
+      <p id="progressMessage">
+        Complete your profile and add meals to see your progress analytics.
+      </p>
+    </section>
+
+    <!-- BMI Meter -->
+    <section class="bmi-section">
+
+      <div class="bmi-box">
+        <h2>Your BMI Status</h2>
+
+        <div class="bmi-meter">
+          <div id="bmiPointer"></div>
+        </div>
+
+        <div class="bmi-labels">
+          <span>Underweight</span>
+          <span>Normal</span>
+          <span>Overweight</span>
+          <span>Obese</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-grid">
+
+      <div class="chart-card">
+        <h2>Calories Progress</h2>
+        <p class="chart-subtitle">Consumed vs remaining calories</p>
+        <canvas id="calorieChart"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h2>BMI Chart</h2>
+        <p class="chart-subtitle">Your current BMI category</p>
+        <canvas id="bmiChart"></canvas>
+      </div>
+
+      <div class="chart-card large-chart">
+        <h2>Weekly Calories Progress</h2>
+        <p class="chart-subtitle">Daily calorie tracking overview</p>
+        <canvas id="weeklyChart"></canvas>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script src="progress.js"></script>
+</body>
+</html>

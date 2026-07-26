@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workout Plans</title>
+  <link rel="stylesheet" href="workout.css" />
+</head>
+<body>
+
+  <div class="workout-page">
+
+    <header class="workout-header">
+      
+      <div class="brand">
+        <div class="logo-circle">
+          <img src="logo.png" alt="CalorieTracker logo" />
+        </div>
+
+        <div>
+          <h1>Workout Plans</h1>
+          <p>Choose your workout difficulty level</p>
+        </div>
+      </div>
+
+      <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+    </header>
+
+    <section class="recommended-section">
+      <div>
+        <span class="recommended-badge">Recommended</span>
+        <h2 id="recommendedTitle">Burn Your Extra Calories</h2>
+        <p id="recommendedText">Choose any workout difficulty level below.</p>
+      </div>
+
+      <div class="fire-circle">🔥</div>
+    </section>
+
+    <section class="workout-options">
+
+      <div class="option-card">
+        <div class="level easy">Easy 🧘</div>
+
+        <div class="card-content">
+          <div>
+            <h3>Walking + Stretching</h3>
+            <p>Simple exercises with low intensity and more duration.</p>
+
+            <div id="easyExerciseList" class="exercise-list">
+              <p>🚶 Walking <span>-- min</span></p>
+              <p>🤸 Stretching <span>-- min</span></p>
+              <p>🧘 Light Yoga <span>-- min</span></p>
+            </div>
+          </div>
+
+          <div class="workout-img">🚶‍♂️</div>
+        </div>
+
+        <div class="card-bottom">
+          <span id="easyTime">-- min</span>
+          <span id="easyBurn">-- kcal</span>
+        </div>
+
+        <button class="start-timer-btn" data-level="easy">Start Timer</button>
+      </div>
+
+      <div class="option-card">
+        <div class="level medium">Medium 💪</div>
+
+        <div class="card-content">
+          <div>
+            <h3>Jogging + Cycling</h3>
+            <p>Moderate exercises with balanced calorie burning.</p>
+
+            <div id="mediumExerciseList" class="exercise-list">
+              <p>🏃 Jogging <span>-- min</span></p>
+              <p>🚴 Cycling <span>-- min</span></p>
+              <p>💪 Squats <span>-- min</span></p>
+            </div>
+          </div>
+
+          <div class="workout-img">🚴‍♂️</div>
+        </div>
+
+        <div class="card-bottom">
+          <span id="mediumTime">-- min</span>
+          <span id="mediumBurn">-- kcal</span>
+        </div>
+
+        <button class="start-timer-btn" data-level="medium">Start Timer</button>
+      </div>
+
+      <div class="option-card">
+        <div class="level hard">Hard 🔥</div>
+
+        <div class="card-content">
+          <div>
+            <h3>HIIT + Cardio</h3>
+            <p>High intensity exercises with faster calorie burn.</p>
+
+            <div id="hardExerciseList" class="exercise-list">
+              <p>🔥 Burpees <span>-- min</span></p>
+              <p>🏋 Pushups <span>-- min</span></p>
+              <p>⚡ Mountain Climbers <span>-- min</span></p>
+            </div>
+          </div>
+
+          <div class="workout-img">🏃‍♂️</div>
+        </div>
+
+        <div class="card-bottom">
+          <span id="hardTime">-- min</span>
+          <span id="hardBurn">-- kcal</span>
+        </div>
+
+        <button class="start-timer-btn" data-level="hard">Start Timer</button>
+      </div>
+
+    </section>
+
+    <section class="timer-section">
+      <h2 id="timerWorkoutName">Choose a workout to start</h2>
+
+      <div class="timer-circle">
+        <h1 id="timerDisplay">00:00</h1>
+
+        <div class="timer-buttons">
+          <button id="pauseBtn">Pause</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+      </div>
+
+      <p id="nextExerciseText">Your next exercise will appear here.</p>
+    </section>
+
+  </div>
+
+  <script src="workout.js"></script>
+</body>
+</html>
