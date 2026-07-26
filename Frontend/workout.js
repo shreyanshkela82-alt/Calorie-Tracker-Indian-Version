@@ -1,12 +1,12 @@
 /* AUTH CHECK */
 
-const API_URL = "https://indian-calorie-tracker-api.onrender.com";
+const API_URL = "https://indian-calorie-tracker-api.onrender.com/api";
 
 const token = localStorage.getItem("token");
 
 if (!token) {
     alert("Please login first.");
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 }
 const extraCalories = Number(localStorage.getItem("extraCalories")) || 0;
 

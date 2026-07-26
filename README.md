@@ -108,7 +108,7 @@ Backend/
 
 Frontend/
 │
-├── loginpage.html
+├── index.html
 ├── loginpage.js
 ├── loginpage.css
 │
@@ -186,7 +186,7 @@ http://localhost:5000
 Simply open
 
 ```
-Frontend/loginpage.html
+Frontend/index.html
 ```
 
 or serve the Frontend folder using **VS Code Live Server**.

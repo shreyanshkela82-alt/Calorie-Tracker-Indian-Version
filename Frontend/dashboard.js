@@ -2,7 +2,7 @@
 // AUTHENTICATION
 // ================================
 
-const API_URL = "https://indian-calorie-tracker-api.onrender.com";
+const API_URL = "https://indian-calorie-tracker-api.onrender.com/api";
 
 const token = localStorage.getItem("token");
 

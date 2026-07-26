@@ -15,7 +15,7 @@ registerForm.addEventListener("submit", async (e) => {
     }
 
     try {
-        const response = await fetch("https://indian-calorie-tracker-api.onrender.com", {
+       const response = await fetch("https://indian-calorie-tracker-api.onrender.com/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ registerForm.addEventListener("submit", async (e) => {
             alert("Registration Successful!");
 
             // Redirect to Login Page
-            window.location.href = "loginpage.html";
+            window.location.href = "index.html";
         } else {
             alert(data.message);
         }

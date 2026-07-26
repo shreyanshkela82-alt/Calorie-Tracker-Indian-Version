@@ -6,7 +6,7 @@ const token = localStorage.getItem("token");
 
 if (!token) {
     alert("Please login first.");
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 }
 
 /* ===========================
@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
 async function loadProfile() {
 
     const response = await fetch(
-        "https://indian-calorie-tracker-api.onrender.com",
+    "https://indian-calorie-tracker-api.onrender.com/api/progress",
         {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -74,7 +74,7 @@ async function loadProfile() {
 async function loadProgress() {
 
     const response = await fetch(
-        "http://localhost:5000/api/progress",
+    "https://indian-calorie-tracker-api.onrender.com/api/profile",
         {
             headers: {
                 Authorization: `Bearer ${token}`

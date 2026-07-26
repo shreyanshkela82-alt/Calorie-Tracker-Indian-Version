@@ -19,10 +19,10 @@ const token = localStorage.getItem("token");
 
 if (!token) {
     alert("Please login first.");
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 }
 
-fetch("https://indian-calorie-tracker-api.onrender.com", {
+fetch("https://indian-calorie-tracker-api.onrender.com/api/profile", {
   method: "GET",
   headers: {
     Authorization: `Bearer ${token}`
@@ -174,7 +174,7 @@ profileForm.addEventListener("submit", function (e) {
 
   const token = localStorage.getItem("token");
 
-fetch("http://localhost:5000/api/profile", {
+fetch("https://indian-calorie-tracker-api.onrender.com/api/profile", {
   method: "PUT",
   headers: {
     "Content-Type": "application/json",
