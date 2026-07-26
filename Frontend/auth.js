@@ -3,7 +3,7 @@ const token = localStorage.getItem("token");
 
 if (!token) {
     alert("Please login first!");
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 }
 
 // Logout Function
@@ -16,5 +16,5 @@ function logoutUser() {
     alert("Logged out successfully!");
 
     // Redirect to login page
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 }

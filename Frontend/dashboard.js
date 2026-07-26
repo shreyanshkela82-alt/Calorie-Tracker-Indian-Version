@@ -8,7 +8,7 @@ const token = localStorage.getItem("token");
 
 if (!token) {
     alert("Please login first.");
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 }
 
 // ================================
@@ -744,7 +744,7 @@ function logoutUser() {
     localStorage.removeItem("token");
     localStorage.removeItem("userProfile");
 
-    window.location.href = "loginpage.html";
+    window.location.href = "index.html";
 
 }
 
